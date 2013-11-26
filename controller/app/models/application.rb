@@ -208,6 +208,12 @@ class Application
     app.init_git_url = OpenShift::Git.persistable_clone_spec(init_git_url)
     app.analytics['user_agent'] = user_agent
     features << "web_proxy" if scalable
+    #Save user env vars to meta
+    if user_env_vars
+      app.meta = {}
+      user_env_vars.each { |env_hash| app.meta[env_hash["name"]] = env_hash["value"] }
+    end
+
     if app.valid?
       begin
         downloaded_cartridges = app.downloaded_cartridges(gear_size_map)
