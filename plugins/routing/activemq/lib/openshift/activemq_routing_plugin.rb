@@ -67,7 +67,8 @@ module OpenShift
       msg = {
         :action => :create_application,
         :app_name => app.name,
-        :namespace => app.domain_namespace,
+        :namespace => app.domain.namespace,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
     end
@@ -76,7 +77,8 @@ module OpenShift
       msg = {
         :action => :delete_application,
         :app_name => app.name,
-        :namespace => app.domain_namespace,
+        :namespace => app.domain.namespace,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
     end
@@ -91,7 +93,8 @@ module OpenShift
         :public_port => public_port,
         :protocols => protocols,
         :types => types,
-        :mappings => mappings
+        :mappings => mappings,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
     end
@@ -102,7 +105,8 @@ module OpenShift
         :app_name => app.name,
         :namespace => app.domain_namespace,
         :public_address => public_ip,
-        :public_port => public_port
+        :public_port => public_port,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
     end
