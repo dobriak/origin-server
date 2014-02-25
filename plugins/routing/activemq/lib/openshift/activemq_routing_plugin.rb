@@ -123,7 +123,7 @@ module OpenShift
         :namespace => app.domain.namespace,
         :gear_id => gear._id.to_s,
         :public_address => public_ip,
-        :public_port => public_port.to_i
+        :public_port => public_port.to_i,
         :public_port => public_port,
         :meta => app.meta
       }
