@@ -78,6 +78,7 @@ module OpenShift
         :namespace => app.domain.namespace,
         :scalable => app.scalable,
         :ha => app.ha,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
     end
@@ -89,6 +90,7 @@ module OpenShift
         :namespace => app.domain.namespace,
         :scalable => app.scalable,
         :ha => app.ha,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
     end
@@ -104,7 +106,8 @@ module OpenShift
         :public_port => public_port.to_i,
         :protocols => protocols,
         :types => types,
-        :mappings => mappings
+        :mappings => mappings,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
       # DEPRECATED, will be removed in OSE 2.2 / Origin 4
@@ -121,6 +124,8 @@ module OpenShift
         :gear_id => gear._id.to_s,
         :public_address => public_ip,
         :public_port => public_port.to_i
+        :public_port => public_port,
+        :meta => app.meta
       }
       send_msg msg.to_yaml
       # DEPRECATED, will be removed in OSE 2.2 / Origin 4

@@ -215,6 +215,13 @@ class Application
 
     io = opts[:result_io] || ResultIO.new
     io.append app.add_initial_cartridges(cartridges, opts[:initial_git_url], opts[:user_env_vars])
+
+    #Save user env vars to meta
+    if opts[:user_env_vars]
+      app.meta = {}
+      opts[:user_env_vars].each { |env_hash| app.meta[env_hash["name"]] = env_hash["value"] }
+    end
+
     app
   end
 
